@@ -1,7 +1,7 @@
 class RevealingReferences
   attr_reader :wheels
 
-  def initalize(data)
+  def initialize(data)
     @wheels = wheelify(data)
   end
 
