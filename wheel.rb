@@ -1,9 +1,12 @@
-class Wheel
-  attr_reader :rim, :tire
+require './gear'
 
-  def initialize(rim, tire)
+class Wheel
+  attr_reader :rim, :tire, :gear
+
+  def initialize(rim, tire, chainring, cog)
     @rim = rim
     @tire = tire
+    @gear = Gear.new(chainring, cog)
   end
 
   def diameter
@@ -13,7 +16,10 @@ class Wheel
   def circumference
     diameter * Math::PI
   end
+
+  def gear_inches
+    gear.gear_inches(diameter)
+  end
 end
 
-@wheel = Wheel.new(26, 1.6)
-puts @wheel.circumference
+puts Wheel.new(26, 1.5, 52, 11).gear_inches
