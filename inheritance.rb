@@ -1,4 +1,11 @@
 class Bicycle
+  def initialize(args = {})
+
+  end
+
+end
+
+class RoadBike < Bicycle
   attr_reader :style, :size, :tape_color,
             :front_shock, :rear_shock
 
@@ -27,9 +34,9 @@ class Bicycle
   end
 end
 
-bike = Bicycle.new style: :mountain, size: 'S', front_shock: 'Manitou', rear_shock: 'Fox'
-puts bike.size
-puts bike.spares
+road_bike = RoadBike.new size: 'M', tape_color: 'red'
+puts road_bike.size
+puts road_bike.spares
 
 class MountainBike < Bicycle
   attr_reader :front_shock, :rear_shock
@@ -45,6 +52,6 @@ class MountainBike < Bicycle
   end
 end
 
-mountain_bike = MountainBike.new style: :road, size: 'S', front_shock: 'Manitou', rear_shock: 'Fox'
+mountain_bike = MountainBike.new size: 'S', front_shock: 'Manitou', rear_shock: 'Fox'
 puts mountain_bike.size
 puts mountain_bike.spares
