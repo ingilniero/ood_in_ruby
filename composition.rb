@@ -1,3 +1,5 @@
+require 'forwardable'
+
 class Bicycle
   attr_reader :size, :parts
 
@@ -13,6 +15,10 @@ end
 
 class Parts
   attr_reader :parts
+
+  extend Forwardable
+  def_delegators :@parts, :size, :each
+  include Enumerable
 
   def initialize(parts)
     @parts = parts
@@ -55,4 +61,5 @@ mountain_bike = Bicycle.new(
 puts mountain_bike.size
 puts mountain_bike.spares
 
+puts road_bike.parts.size
 
