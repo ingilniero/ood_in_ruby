@@ -7,11 +7,11 @@ class Schedule
   end
 end
 
-class Bicycle
-  attr_reader :schedule, :size, :chain, :tire_size
+module Schedulable
+  attr_writer :schedule
 
-  def initialize(args={})
-    @schedule = args[:schedule] || Schedule.new
+  def schedule
+    @schedule ||= ::Schedule.new
   end
 
   def schedulable?(start_date, end_date)
@@ -21,6 +21,14 @@ class Bicycle
   def scheduled?(start_date, end_date)
     schedule.scheduled?(self, start_date, end_date)
   end
+
+  def lead_days
+    0
+  end
+end
+
+class Bicycle
+  include Schedulable
 
   def lead_days
     1
