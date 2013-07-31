@@ -60,8 +60,16 @@ mountain_config =
     ['rear_shock', 'Fox']
   ]
 
-road_parts = PartsFactory.build(road_config)
-mountain_parts = PartsFactory.build(mountain_config)
+road_bike =
+  Bicycle.new(
+    size: 'L',
+    parts: PartsFactory.build(road_config))
 
-puts road_parts.inspect
-puts mountain_parts.inspect
+puts road_bike.spares
+
+mountain_bike =
+  Bicycle.new(
+    size: 'L',
+    parts: PartsFactory.build(mountain_config))
+
+puts mountain_bike.spares
